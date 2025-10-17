@@ -1,0 +1,21 @@
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "19000:19000"  # Expo
+      - "19001:19001"
+      - "19002:19002"
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+    stdin_open: true
+    tty: true
