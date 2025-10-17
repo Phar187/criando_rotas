@@ -1,4 +1,4 @@
-#criando-rotas - Aplicativo de Segurança Urbana
+# criando-rotas - Aplicativo de Segurança Urbana
 
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)
 [![NestJS](https://img.shields.io/badge/NestJS-10.x-red)](https://nestjs.com/)
@@ -70,17 +70,24 @@ O projeto segue a filosofia **MVP1 focado em segurança e funcionalidade essenci
 ```bash
 git clone https://github.com/usuario/safe-routes.git
 cd safe-routes
+```
 
 ### 2. Instalar dependências
+
+```bash
 cd backend
 npm install
 cd ../frontend
 npm install
 cd ..
+```
 
 ### 3. Construir e subir containers
+
+```bash
 docker compose build
 docker compose up
+```
 
 
 
