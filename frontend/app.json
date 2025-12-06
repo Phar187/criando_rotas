@@ -12,7 +12,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.rpII.rotaseguras",
       "config": {
-        "googleMapsApiKey": "AIzaSyCCztq0Ygza7Zz6HTwG3F7fmb1cHb2nhVo"
+        "googleMapsApiKey": "chave_usada"
       },
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
