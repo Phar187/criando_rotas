@@ -28,7 +28,7 @@
       "package": "com.rpII.rotaseguras",
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyBCU6l99sRIVWMY1FIYg9xKnezbEiSdUFM"
+          "apiKey": "chave_usada"
         }
         
       },
