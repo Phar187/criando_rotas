@@ -1,24 +1,32 @@
 # Rotas Seguras (Safe Routes)
 
-> Uma plataforma de crowdsourcing para monitoramento de segurança urbana e rotas inteligentes.
+O **Rotas Seguras** é uma plataforma de crowdsourcing focada em segurança urbana. O sistema coleta dados de incidentes reportados pela comunidade para calcular e sugerir trajetos mais seguros em tempo real.
 
-## Sobre o Projeto
-O **Rotas Seguras** é uma aplicação desenvolvida como parte da disciplina de Laboratório de Desenvolvimento de Software na **EACH-USP**. O objetivo é mitigar a insegurança urbana permitindo que usuários relatem incidentes (furtos, assédio, iluminação precária) e consultem rotas mais seguras baseadas em dados colaborativos.
+O projeto foi desenvolvido no contexto acadêmico da **EACH-USP**, utilizando uma arquitetura voltada para escalabilidade e processamento de dados geoespaciais.
 
-## Tecnologias & Arquitetura (Back-end Focus)
+##  Visão Geral da Arquitetura
 
-O sistema foi construído seguindo princípios de **Clean Architecture** e **Modularidade**.
+O sistema opera sobre uma arquitetura híbrida, utilizando serviços gerenciados para persistência e containers para a lógica de negócio.
 
-* **Back-end:** [Nest.js](https://nestjs.com/) (Framework Node.js progressivo)
-* **Linguagem:** TypeScript
-* **Banco de Dados & Auth:** Firebase (Firestore & Authentication)
-* **Mobile:** React Native + Expo
-* **Design Patterns:** Dependency Injection, Repository Pattern (via Firebase Service), DTOs para validação.
+* **Backend:** NestJS (Node.js)
+* **Banco de Dados:** Google Firestore (NoSQL)
+* **Autenticação:** Firebase Authentication
+* **Infraestrutura:** Docker (Ambiente de Desenvolvimento) e Google Cloud Run (Produção/Conceito)
+* **Mobile:** React Native (Expo)
 
-## Funcionalidades Principais
+##  Destaques Técnicos (Backend)
 
-* **Autenticação Segura:** Login e registro integrados via Firebase Auth.
-* **Gestão de Ocorrências:** API para criação (Create) e leitura (Read) de incidentes geolocalizados.
-* **Categorização de Risco:** Classificação de incidentes (Furto, Assédio, Saúde, Infraestrutura).
-* **Visualização de Dados:** Endpoints otimizados para plotagem de dados em mapas interativos.
+### 1. Algoritmo de Índice de Segurança
+O núcleo da aplicação é o `Seguranca Service`. Este serviço implementa um algoritmo de ponderação que transforma dados subjetivos (relatos de usuários) em uma métrica quantitativa de risco para regiões específicas. O cálculo considera:
+* Tipologia do incidente (Furto, Iluminação, Assédio, etc.).
+* Frequência de reportes em um raio geoespacial.
+* Decaimento temporal da relevância do alerta.
+
+### 2. Estratégia de Dados
+Utilização do Firestore para armazenamento de documentos flexíveis, permitindo a ingestão rápida de dados não estruturados provenientes dos relatos dos usuários. A modelagem foi otimizada para consultas geoespaciais, reduzindo a latência na plotagem de mapas de calor.
+
+### 3. Modularidade e Segurança
+A API foi construída seguindo princípios de Clean Architecture dentro do ecossistema NestJS, garantindo o desacoplamento entre as camadas de controle, serviço e repositório.
+* **Validação de Entrada:** Pipelines de validação rigorosos para garantir a integridade dos payloads recebidos.
+* **Injeção de Dependência:** Utilizada para facilitar testes unitários e manutenção do código.
 
